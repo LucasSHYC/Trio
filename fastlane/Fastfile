@@ -67,18 +67,14 @@ platform :ios do
       key_content: "#{FASTLANE_KEY}"
     )
 
-    previous_build_number = latest_testflight_build_number(
-      app_identifier: "#{BUNDLE_ID}",
-      api_key: api_key,
-      initial_build_number: 0
-    )
+   
     produce(
     app_identifier: "#{BUNDLE_ID}",
     app_name: "Trio_JARVIS",
     api_key: api_key,
     skip_itc: false
-)
-    current_build_number = previous_build_number + 1
+    )
+    current_build_number = 1
 
     increment_build_number(
       xcodeproj: "#{GITHUB_WORKSPACE}/Trio.xcodeproj",
