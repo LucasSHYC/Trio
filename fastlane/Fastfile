@@ -72,9 +72,12 @@ platform :ios do
       api_key: api_key,
       initial_build_number: 0
     )
-    rescue
-      0
-    end
+    produce(
+    app_identifier: "#{BUNDLE_ID}",
+    app_name: "Trio_JARVIS",
+    api_key: api_key,
+    skip_itc: false
+)
     current_build_number = previous_build_number + 1
 
     increment_build_number(
