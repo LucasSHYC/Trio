@@ -68,7 +68,7 @@ platform :ios do
     )
 
     previous_build_number = latest_testflight_build_number(
-      app_identifier: "com.#{TEAMID}.loopkit.Loop",
+      app_identifier: "#{BUNDLE_ID}",
       api_key: api_key,
     )
 
@@ -140,7 +140,6 @@ platform :ios do
 
   desc "Push to TestFlight"
   lane :release do
-  BUNDLE_ID = ENV["BUNDLE_ID"]
     api_key = app_store_connect_api_key(
       key_id: "#{FASTLANE_KEY_ID}",
       issuer_id: "#{FASTLANE_ISSUER_ID}",
@@ -149,8 +148,6 @@ platform :ios do
     
     upload_to_testflight(
       api_key: api_key,
-      app_identifier: "#{BUNDLE_ID}",
-      team_id: "#{TEAMID}",
       skip_submission: false,
       ipa: "Trio.ipa",
       skip_waiting_for_build_processing: true,
